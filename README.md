@@ -20,7 +20,12 @@ There are three main components to this app (Many will be added later):
   * This component supposes that your budget is fulfilled in one month only.
 
 
-
+## Methods in each component
+* Expenditure allocator:
+ * __init__(): Takes monthly income, budget, tax(in %) as parameters
+ * tax(): Returns the amount of income to be paid as tax
+ * expenses(): Returns the remaining income after budget and tax are deducted
+ * allocate(): This is the most important method in this component. It takes the remaining income and splits it among food, basicities, education, recreation and savings. The percentage of division is based on the optimal planning.
 
 
 
