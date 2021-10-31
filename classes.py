@@ -32,7 +32,3 @@ class Expenditure:
             Recreation/Entertainment: {recreation} \
             Savings: {savings} \
             Total spent: {total_spent}"
-
-
-E1 = Expenditure(6000, 1000, 5)
-print(E1.allocate())
