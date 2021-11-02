@@ -57,4 +57,4 @@ class Budget:
     def budget_per_month(self, time):
         from math import ceil
 
-        return ceil(self.budget / time)
+        return ceil(self.total_budget / time)
