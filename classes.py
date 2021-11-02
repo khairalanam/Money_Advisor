@@ -2,21 +2,17 @@
 
 class Expenditure:
 
-    # Takes monthly income, budget, tax(in %) as parameters
     def __init__(self, income, budget, tax):
         self.income = income
         self.budget = budget
         self.tax = tax
 
-    # Returns the amount of income to be paid as tax
     def tax_amount(self):
         return self.income*(self.tax/100)
 
-    # Returns the remaining income after tax and budget are deducted from the total income
     def expenses(self):
         return self.income*(1 - (self.tax/100)) - self.budget
 
-    # Allocates the remaining income to the subsets like food, basicities etc
     def allocate(self):
         Expenses = self.income*(1 - (self.tax/100)) - self.budget
         food = 0.25 * Expenses
@@ -32,3 +28,33 @@ class Expenditure:
             Recreation/Entertainment: {recreation} \
             Savings: {savings} \
             Total spent: {total_spent}"
+
+# Creating class Budget to calculate monthly budget from income, expenses and total budget for an item
+
+
+class Budget:
+
+    def __init__(self, income, expenses, total_budget):
+        self.income = income
+        self.expenses = expenses
+        self.total_budget = total_budget
+
+    def budget(self):
+        return self.income - self.expenses
+
+    def months_needed(self):
+        from math import ceil
+
+        time_needed = self.total_budget / self.budget
+        if self.total_budget % self.budget == 0:
+            return time_needed
+        else:
+            if ceil(time_needed) - time_needed == 0.5:
+                return time_needed
+            else:
+                return ceil(time_needed)
+
+    def budget_per_month(self, time):
+        from math import ceil
+
+        return ceil(self.budget / time)
