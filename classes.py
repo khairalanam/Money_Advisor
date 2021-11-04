@@ -45,7 +45,8 @@ class Expenditure:
             else:
                 return ceil(time_needed)
 
-    def budget_per_month(self, total_budget, time):
+    @staticmethod
+    def budget_per_month(total_budget, time):
         from math import ceil
 
         return ceil(total_budget / time)
