@@ -2,19 +2,23 @@
 
 class Expenditure:
 
-    def __init__(self, income, budget, tax):
+    def __init__(self, income, monthly_budget, tax):
         self.income = income
-        self.budget = budget
+        self.monthly_budget = monthly_budget
         self.tax = tax
 
     def tax_amount(self):
         return self.income*(self.tax/100)
 
     def expenses(self):
-        return self.income*(1 - (self.tax/100)) - self.budget
+        return self.income*(1 - (self.tax/100)) - self.monthly_budget
+
+    def budget(self):
+        spendings = Expenditure.expenses()
+        return self.income - spendings
 
     def allocate(self):
-        Expenses = self.income*(1 - (self.tax/100)) - self.budget
+        Expenses = self.income*(1 - (self.tax/100)) - self.monthly_budget
         food = 0.25 * Expenses
         education = 0.3 * Expenses
         basicities = 0.15 * Expenses
@@ -29,24 +33,11 @@ class Expenditure:
             Savings: {savings} \
             Total spent: {total_spent}"
 
-# Creating class Budget to calculate monthly budget from income, expenses and total budget for an item
-
-
-class Budget:
-
-    def __init__(self, income, expenses, total_budget):
-        self.income = income
-        self.expenses = expenses
-        self.total_budget = total_budget
-
-    def budget(self):
-        return self.income - self.expenses
-
-    def months_needed(self):
+    def months_needed(self, total_budget):
         from math import ceil
 
-        time_needed = self.total_budget / self.budget
-        if self.total_budget % self.budget == 0:
+        time_needed = total_budget / self.monthly_budget
+        if total_budget % self.monthly_budget == 0:
             return time_needed
         else:
             if ceil(time_needed) - time_needed == 0.5:
@@ -54,7 +45,7 @@ class Budget:
             else:
                 return ceil(time_needed)
 
-    def budget_per_month(self, time):
+    def budget_per_month(self, total_budget, time):
         from math import ceil
 
-        return ceil(self.total_budget / time)
+        return ceil(total_budget / time)
