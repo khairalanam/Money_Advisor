@@ -12,6 +12,7 @@ This is a full fledged application coded in Python to track your expenses, budge
 * Static Methods
 * Math module
 * Conditionals
+* Functions
 
 ## Components of the Money App
 There are three main components to this app (Many will be added later):
@@ -28,16 +29,13 @@ There are three main components to this app (Many will be added later):
 
 ## Methods in each class
 * class "Expenditure":
-  * __init__(self, income, budget, tax): Takes monthly income, budget, tax(in %) as parameters
+  * __init__(self, income, budget, tax): Takes monthly income, monthly budget, tax(in %) as parameters
   * tax(): Returns the amount of income to be paid as tax
-  * expenses(): Returns the remaining income after budget and tax are deducted
+  * expenses(): Returns the remaining income after monthly budget and tax are deducted
   * allocate(): This is the most important method in this component. It takes the remaining income and splits it among food, basicities, education, recreation and savings. The percentage of division is based on the optimal planning.
-
-* class "Budget":
-  * __init__(self, income, expenses, total_budget): Takes monthly income, monthly expenses (including tax amount) and total budget for the item to buy
   * budget(): Returns budget amount after subtracting monthly expenses from the monthly income
-  * months_needed(): Returns the number of months needed to fulfil the total budget after dividing it by the monthly budget. It uses math module to round up the number of months to a whole number.
-  * budget_per_month(self, time): Takes time (in months) as integer and divides the total budget by the given number of months to satisfy the budget per month.
+  * months_needed(self, total_budget): Returns the number of months needed to fulfil the total budget parameter after dividing it by the monthly budget. It uses math module to round up the number of months to a whole number.
+  * budget_per_month(total_budget, time): It is a static method which takes time (in months as integer) and total budget as parameters and divides the total budget by the given number of months to satisfy the budget per month.
 
 *More information will be added later*
 
