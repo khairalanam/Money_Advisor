@@ -1,4 +1,4 @@
-# Money_App
+# Money_Advisor
 
 This is a full fledged application coded in Python to track your expenses, budget and savings. This program asks users to input data related to finances like budget, expenditure, savngs, basics, tax etc.
 
@@ -24,7 +24,7 @@ There are three main components to this app (Many will be added later):
 
 * Budget Calculator
   * The purpose of this component is to calculate the monthly budget from the monthly income and monthly expenses.
-  * It allows you to calculate the budget divided between the number of months given by the user
+  * It allows you to calculate the budget divided between the number of months given by the user.
   * It also allows you to calculate the number of months it takes to satisfy the total budget if the monthly budget is not enough.
 
 ## Methods in each class
