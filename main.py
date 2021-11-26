@@ -6,7 +6,10 @@ from classes import Expenditure
 def y_or_n():
     global yes_or_no
     yes_or_no = input("Continue? (y/n): ")
-    if yes_or_no in ["y", "n"]:
+    if yes_or_no == "y":
+        return yes_or_no
+    elif yes_or_no == "n":
+        print("Thanks for using Money Advisor :)")
         return yes_or_no
     else:
         print("Invalid input!")
@@ -17,10 +20,13 @@ def y_or_n():
 print("Welcome to the Money Advisor!")
 print("1. Expenditure Allocator")
 print("2. Budget Calculator")
-print("3. (Coming Soon)")
 
-selector = int(input(
-    "Type the number to proceed to any one of the three components mentioned above: "))
+selector = 0
+while selector not in [1, 2]:
+    selector = int(input(
+        "Type the number to proceed to any one of the two components mentioned above: "))
+    if selector not in [1, 2]:
+        print("Invalid input!")
 
 yes_or_no = "y"
 
@@ -32,8 +38,12 @@ if selector == 1:
         budget = int(input("Enter your monthly budget(in dollars): "))
         tax = int(input("Enter the monthly tax rate(in %): "))
         expense = Expenditure(income, budget, tax)
+        print("*****************************")
+        print("*****************************")
         print(expense.allocate())
         print("*****************************")
+        print("*****************************")
+
         yes_or_no = y_or_n()
 
 # Budget Calculator Component
@@ -69,5 +79,3 @@ if selector == 2:
                 f"You will need to have a monthly budget of f{Expenditure.budget_per_month(full_budget, time)} dollars per month in order to fulfill your total budget of {full_budget} within {time} months.")
 
         yes_or_no = y_or_n()
-
-#
