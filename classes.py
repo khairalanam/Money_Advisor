@@ -14,7 +14,7 @@ class Expenditure:
         return self.income*(1 - (self.tax/100)) - self.monthly_budget
 
     def budget(self):
-        spendings = Expenditure.expenses()
+        spendings = Expenditure.expenses(self)
         return self.income - spendings
 
     def allocate(self):
@@ -23,15 +23,17 @@ class Expenditure:
         education = 0.3 * Expenses
         basicities = 0.15 * Expenses
         recreation = 0.1 * Expenses
-        total_spent = food + basicities + recreation + education
+        Tax = self.income*(self.tax/100)
+        total_spent = food + basicities + recreation + education + Tax
         savings = Expenses - total_spent
-        return f"Your optimal expenditure is as follows: \
-            Food expenses: {food} \
-            Education: {education} \
-            Basicities: {basicities} \
-            Recreation/Entertainment: {recreation} \
-            Savings: {savings} \
-            Total spent: {total_spent}"
+        return f"""Your optimal expenditure is as follows:
+            Food expenses: {food}
+            Education: {education}
+            Basicities: {basicities}
+            Recreation/Entertainment: {recreation}
+            Tax = {Tax}
+            Savings: {savings}
+            Total spent: {total_spent}"""
 
     def months_needed(self, total_budget):
         from math import ceil
