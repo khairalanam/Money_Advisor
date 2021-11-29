@@ -1,5 +1,3 @@
-# Creating class Expenditure to calculate expenses and allocate them to its subsets
-
 class Expenditure:
 
     def __init__(self, income, monthly_budget, tax):
@@ -14,8 +12,9 @@ class Expenditure:
         return self.income*(1 - (self.tax/100)) - self.monthly_budget
 
     def budget(self):
-        spendings = Expenditure.expenses(self)
-        return self.income - spendings
+        spendings = (0.8 * Expenditure.expenses(self)) + \
+            Expenditure.tax_amount(self)
+        return Expenditure.expenses(self) - spendings + self.monthly_budget
 
     def allocate(self):
         Expenses = self.income*(1 - (self.tax/100)) - self.monthly_budget
@@ -26,14 +25,14 @@ class Expenditure:
         Tax = self.income*(self.tax/100)
         total_spent = food + basicities + recreation + education + Tax
         savings = Expenses - total_spent
-        return f"""Your optimal expenditure is as follows:
-            Food expenses: {food}
-            Education: {education}
-            Basicities: {basicities}
-            Recreation/Entertainment: {recreation}
-            Tax = {Tax}
-            Savings: {savings}
-            Total spent: {total_spent}"""
+        return f"""Here's your optimal expenditure plan:
+        Food expenses: {food}
+        Education: {education}
+        Basicities: {basicities}
+        Recreation/Entertainment: {recreation}
+        Tax = {Tax}
+        Savings: {savings}
+        Total spent: {total_spent}"""
 
     def months_needed(self, total_budget):
         from math import ceil
